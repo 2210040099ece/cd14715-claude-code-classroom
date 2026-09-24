@@ -54,7 +54,9 @@ async function testHaiku() {
   // TODO: Define system prompt
   // Goal: Classify support ticket priority as: LOW, MEDIUM, HIGH, or URGENT
   const system = `YOUR SYSTEM PROMPT HERE`;
+const system = `Classify support ticket priority as: LOW, MEDIUM, HIGH, or URGENT. Respond with only the level.`;
 
+const result = await callClaude("haiku", system, TICKETS.simple);
   // TODO: Call Claude with Haiku model
   const result = null; // Replace with API call
 
@@ -80,10 +82,18 @@ async function testSonnet() {
   //   4. Recommended action
   // Keep response concise
   const system = `YOUR SYSTEM PROMPT HERE`;
+const system = `Analyze the support ticket. Extract:
+                  1. Priority level
+                  2. Issue category
+                  3. Key details
+                  4. Recommended action
 
+                  Be concise.`;
+
+const result = await callClaude("sonnet", system, TICKETS.moderate);
   // TODO: Call Claude with Sonnet model
   // Use: callClaude("sonnet", system, TICKETS.moderate)
-  const result = null; // Replace with API call
+   // Replace with API call
 
   // TODO: Display results
   console.log(`Result:\n${result.text}`);
